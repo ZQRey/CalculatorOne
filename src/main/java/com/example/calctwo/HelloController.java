@@ -49,73 +49,73 @@ public class HelloController {
     private Double total;
 
     @FXML
-    protected void setDot(){
+    protected void setDot() {
         String input = window.getText() + dot.getText();
         window.setText(input);
     }
 
     @FXML
-    protected void setZero(){
+    protected void setZero() {
         String input = window.getText() + zero.getText();
         window.setText(input);
     }
 
     @FXML
-    protected void setOne(){
+    protected void setOne() {
         String input = window.getText() + one.getText();
         window.setText(input);
     }
 
     @FXML
-    protected void setTwo(){
+    protected void setTwo() {
         String input = window.getText() + two.getText();
         window.setText(input);
     }
 
     @FXML
-    protected void setThree(){
+    protected void setThree() {
         String input = window.getText() + three.getText();
         window.setText(input);
     }
 
     @FXML
-    protected void setFour(){
+    protected void setFour() {
         String input = window.getText() + four.getText();
         window.setText(input);
     }
 
     @FXML
-    protected void setFive(){
+    protected void setFive() {
         String input = window.getText() + five.getText();
         window.setText(input);
     }
 
     @FXML
-    protected void setSix(){
+    protected void setSix() {
         String input = window.getText() + six.getText();
         window.setText(input);
     }
 
     @FXML
-    protected void setSeven(){
+    protected void setSeven() {
         String input = window.getText() + seven.getText();
         window.setText(input);
     }
 
     @FXML
-    protected void setEight(){
+    protected void setEight() {
         String input = window.getText() + eight.getText();
         window.setText(input);
     }
 
     @FXML
-    protected void setNine(){
+    protected void setNine() {
         String input = window.getText() + nine.getText();
         window.setText(input);
     }
 
     @FXML
-    protected void setPlus(){
+    protected void setPlus() {
         operation = "+";
         total = Double.parseDouble(String.valueOf(window.getText()));
         window.clear();
@@ -123,7 +123,7 @@ public class HelloController {
     }
 
     @FXML
-    protected void setMinus(){
+    protected void setMinus() {
         operation = "-";
         total = Double.parseDouble(String.valueOf(window.getText()));
         window.clear();
@@ -131,7 +131,7 @@ public class HelloController {
     }
 
     @FXML
-    protected void setMultiply(){
+    protected void setMultiply() {
         operation = "*";
         total = Double.parseDouble(String.valueOf(window.getText()));
         window.clear();
@@ -139,7 +139,7 @@ public class HelloController {
     }
 
     @FXML
-    protected void setDivide(){
+    protected void setDivide() {
         operation = "/";
         total = Double.parseDouble(String.valueOf(window.getText()));
         window.clear();
@@ -147,63 +147,63 @@ public class HelloController {
     }
 
     @FXML
-    protected void setPlusOrMinus(){
+    protected void setPlusOrMinus() {
         window.setText(String.valueOf(Double.parseDouble(String.valueOf(window.getText())) * (-1)));
     }
 
-    private void SetPromtTextNumberTwo(){
+    private void SetPromtTextNumberTwo() {
         window.setPromptText("Введите второе число");
     }
 
     @FXML
-    protected void getResult(){
+    protected void getResult() {
         double numTwo = Double.parseDouble(String.valueOf(window.getText()));
-            switch (operation){
-                case ("+"):
-                    total += Double.parseDouble(String.valueOf(window.getText()));
+        switch (operation) {
+            case ("+"):
+                total += Double.parseDouble(String.valueOf(window.getText()));
+                break;
+            case ("-"):
+                total -= Double.parseDouble(String.valueOf(window.getText()));
+                break;
+            case ("*"):
+                if (total == 0.0 || numTwo == 0.0) {
+                    window.setText("");
+                    total = 0.0;
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Ошибка");
+                    alert.setHeaderText("Найдена ошибка умнижения на 0");
+                    alert.show();
                     break;
-                case ("-"):
-                    total -= Double.parseDouble(String.valueOf(window.getText()));
+                }
+                total *= numTwo;
+                break;
+            case ("/"):
+                if (total == 0.0 || numTwo == 0.0) {
+                    window.setText("");
+                    total = 0.0;
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Ошибка");
+                    alert.setHeaderText("Найдена ошибка деления на 0");
+                    alert.show();
                     break;
-                case ("*"):
-                    if (total == 0.0 || numTwo == 0.0){
-                        window.setText("");
-                        total = 0.0;
-                        Alert alert = new Alert(Alert.AlertType.ERROR);
-                        alert.setTitle("Ошибка");
-                        alert.setHeaderText("Найдена ошибка умнижения на 0");
-                        alert.show();
-                        break;
-                    }
-                    total *= numTwo;
-                    break;
-                case ("/"):
-                    if (total == 0.0 || numTwo == 0.0){
-                        window.setText("");
-                        total = 0.0;
-                        Alert alert = new Alert(Alert.AlertType.ERROR);
-                        alert.setTitle("Ошибка");
-                        alert.setHeaderText("Найдена ошибка деления на 0");
-                        alert.show();
-                        break;
-                    }
-                    total /= Double.parseDouble(String.valueOf(window.getText()));
-                    break;
-            }
-            window.setText(String.valueOf(total));
+                }
+                total /= Double.parseDouble(String.valueOf(window.getText()));
+                break;
+        }
+        window.setText(String.valueOf(total));
     }
 
     @FXML
-    protected void clearField(){
+    protected void clearField() {
         window.clear();
         window.setPromptText("Введите первое число");
     }
 
     @FXML
-    protected void backSpace(){
+    protected void backSpace() {
         try {
             window.setText(String.valueOf(window.getText().substring(0, window.getText().length() - 1)));
-        } catch (Exception e){
+        } catch (Exception e) {
             window.setPromptText("Удаление не возможно");
         }
     }
